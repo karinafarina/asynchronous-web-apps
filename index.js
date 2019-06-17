@@ -6,7 +6,7 @@ const key = 'afcf621fab2f7cabbd6a33d63f65bf8b2a244197';
 
 function getHandle(searchTerm) {
   console.log('searchterm:', searchTerm)
-  fetch(`https://api.github.com/users/:username/repos`)
+  fetch(`https://api.github.com/users/${searchTerm}/repos/`)
   .then(response => response.json())
   .then(responseJson => displayResults(responseJson))
   .catch(error => alert('Something went wrong. Try again later.'));
