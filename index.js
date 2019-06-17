@@ -9,13 +9,14 @@ function getHandle(searchTerm) {
   fetch(`https://api.github.com/users/${searchTerm}/repos`)
   .then(response => response.json())
   .then(responseJson => displayResults(responseJson))
-  .catch(error => alert('Something went wrong. Try again later.'));
+  //.catch(error => alert('Something went wrong. Try again later.'));
 }
 
 function displayResults(responseJson) {
   console.log('display response: ', responseJson);
-    for(i=0; i < responseJson.length; i++) {
-    $('#repos-list').append(`<li>${responseJson.name}</li>`);
+    let i;
+    for( i = 0; i < responseJson.length; i++) {
+      $('#repos-list').append(`<li>${responseJson[i].name} <a href=${responseJson[i].url}>Take a look!</a></li>`);
     }
   $('#repos').removeClass(' hidden');
 }
