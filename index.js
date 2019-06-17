@@ -6,7 +6,7 @@ const key = 'afcf621fab2f7cabbd6a33d63f65bf8b2a244197';
 
 function getHandle(searchTerm) {
   console.log('searchterm:', searchTerm)
-  fetch(`https://api.github.com/users/${searchTerm}/repos/`)
+  fetch(`https://api.github.com/users/${searchTerm}/repos`)
   .then(response => response.json())
   .then(responseJson => displayResults(responseJson))
   .catch(error => alert('Something went wrong. Try again later.'));
@@ -14,7 +14,9 @@ function getHandle(searchTerm) {
 
 function displayResults(responseJson) {
   console.log('display response: ', responseJson);
-  $('#repos-list').append(`<li>${responseJson.user_repositories_url}</li>`);
+    for(i=0; i < responseJson.length; i++) {
+    $('#repos-list').append(`<li>${responseJson.name}</li>`);
+    }
   $('#repos').removeClass(' hidden');
 }
 
