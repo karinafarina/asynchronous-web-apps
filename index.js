@@ -14,7 +14,7 @@ function getHandle(searchTerm) {
 
 function displayResults(responseJson) {
   console.log('display response: ', responseJson);
-  $('#repos-list').append(`<li>${responseJson.user_repository_url}</li>`);
+  $('#repos-list').append(`<li>${responseJson.user_repositories_url}</li>`);
   $('#repos').removeClass(' hidden');
 }
 
