@@ -5,16 +5,17 @@ const key = 'afcf621fab2f7cabbd6a33d63f65bf8b2a244197';
 
 
 function getHandle(searchTerm) {
-  fetch('https://api.github.com?type=owner&sort=full_name&direction=desc')
-
+  console.log('searchterm:', searchTerm)
+  fetch(`https://api.github.com?type=owner&sort=${searchTerm}&direction=desc`)
   .then(response => response.json())
-  console.log(responseJson)
-  .then(responseJson => displyaResults(responseJson))
+  .then(responseJson => displayResults(responseJson))
   .catch(error => alert('Something went wrong. Try again later.'));
 }
 
 function displayResults(responseJson) {
-  console.log(responseJson);
+  console.log('display response: ', responseJson);
+  $('#repos-list').append(`<li>${responseJson.user_repository_url}</li>`);
+  $('#repos').removeClass(' hidden');
 }
 
 function watchForm() {
@@ -27,4 +28,4 @@ function watchForm() {
 }
 
 
-$(watchForm)
+$(watchForm);
