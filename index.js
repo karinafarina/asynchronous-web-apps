@@ -13,10 +13,11 @@ function getHandle(searchTerm) {
 }
 
 function displayResults(responseJson) {
+  $('#repos-list').empty();
   console.log('display response: ', responseJson);
     let i;
     for( i = 0; i < responseJson.length; i++) {
-      $('#repos-list').append(`<li>${responseJson[i].name} <a href=${responseJson[i].url}>Take a look!</a></li>`);
+      $('#repos-list').append(`<li>${responseJson[i].name} <a href=${responseJson[i].html_url}>Take a look!</a></li>`);
     }
   $('#repos').removeClass(' hidden');
 }
